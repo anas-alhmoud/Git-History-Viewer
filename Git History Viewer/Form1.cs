@@ -41,10 +41,26 @@ namespace Git_History_Viewer
                         while (condition)
                         {
                             var g = e.Graphics;
+
+
+                            try
+                            {
+                                var dummy = listEnumerator.Current;
+                            }
+                            catch (ArgumentNullException)
+                            {
+                                // draw branch
+                                g.DrawRectangle(new Pen(Brushes.Black), x - 20, y - 70, 90, 50);
+
+                                // branch name
+                                g.DrawString(branch.FriendlyName, Font, Brushes.Black, new PointF(x, y - 55));
+                            }
+
                             condition = listEnumerator.MoveNext();
 
                             // draw circle
                             g.DrawEllipse(new Pen(Brushes.Black), x, y, 50, 50);
+
                             // hash
                             g.DrawString(listEnumerator.Current.Sha.Substring(0, 7), Font, Brushes.Black, new PointF(x, y + 60));
 
