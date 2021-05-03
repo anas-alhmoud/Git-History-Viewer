@@ -80,6 +80,8 @@ namespace Git_History_Viewer
                             checkout = true;
                         }
 
+                        listCommitMetaData.Add(new CommitMetaData(arr[i].Sha, x, y));
+
                         if (i > 0)
                         {
                             // draw line
@@ -89,7 +91,6 @@ namespace Git_History_Viewer
                         }
 
 
-                        listCommitMetaData.Add(new CommitMetaData(arr[i].Sha, x, y));
                     }
 
                     y += 170;
